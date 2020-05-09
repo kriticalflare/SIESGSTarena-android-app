@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/contestsFragment"
+        android:icon="@drawable/ic_code_black_24dp"
+        android:title="Contests" />
+    <item
+        android:id="@+id/problemsFragment"
+        android:icon="@drawable/ic_forum_black_24dp"
+        android:title="Problems" />
+    <item
+        android:id="@+id/usersFragment"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Users" />
+</menu>

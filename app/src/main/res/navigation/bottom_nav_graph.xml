@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph.xml"
+    app:startDestination="@id/contestsFragment">
+
+    <fragment
+        android:id="@+id/contestsFragment"
+        android:name="com.kriticalflare.siesgstarena.contests.ui.ContestsFragment"
+        android:label="Contests"
+        tools:layout="@layout/fragment_contests" />
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.kriticalflare.siesgstarena.ui.UsersFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_users" />
+    <fragment
+        android:id="@+id/problemsFragment"
+        android:name="com.kriticalflare.siesgstarena.problemset.ui.ProblemsFragment"
+        android:label="Problem Sets"
+        tools:layout="@layout/fragment_problems" />
+</navigation>
