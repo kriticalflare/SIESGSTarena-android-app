@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_contests" />
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.kriticalflare.siesgstarena.ui.UsersFragment"
+        android:name="com.kriticalflare.siesgstarena.users.ui.UsersFragment"
         android:label="Users"
         tools:layout="@layout/fragment_users" />
     <fragment
