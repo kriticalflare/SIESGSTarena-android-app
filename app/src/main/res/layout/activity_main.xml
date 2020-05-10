@@ -20,7 +20,7 @@
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="58dp"
         app:backgroundColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu"/>
