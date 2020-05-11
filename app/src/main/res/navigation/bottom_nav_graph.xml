@@ -19,5 +19,9 @@
         android:id="@+id/problemsFragment"
         android:name="com.kriticalflare.siesgstarena.problemset.ui.ProblemsFragment"
         android:label="Problem Sets"
-        tools:layout="@layout/fragment_problems" />
+        tools:layout="@layout/fragment_problems">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="siesgstarena://problem_set" />
+    </fragment>
 </navigation>
