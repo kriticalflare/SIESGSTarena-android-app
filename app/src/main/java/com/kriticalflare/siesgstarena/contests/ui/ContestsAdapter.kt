@@ -46,7 +46,7 @@ class ContestsAdapter(private val data: List<Contest>): RecyclerView.Adapter<Con
                 )
             binding.contestName.text = data.name
             binding.contestDescription.text = data.description
-            binding.contestType.text = data.contestType.name
+            binding.contestType.text = data.contestType?.name
             binding.contestStartDate.text = formattedDateAndTime
         }
 

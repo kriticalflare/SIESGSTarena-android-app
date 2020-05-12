@@ -1,13 +1,23 @@
 package com.kriticalflare.siesgstarena.contests.repository
 
-import com.kriticalflare.siesgstarena.models.Contest
-import com.kriticalflare.siesgstarena.network.ApiService
+import com.kriticalflare.siesgstarena.database.ContestsDao
+import com.kriticalflare.siesgstarena.network.ArenaApiClient
+import com.kriticalflare.siesgstarena.repository.BaseRepo
 
 class ContestsRepository(
-    private val apiService: ApiService
-) {
+    private val arenaApiClient: ArenaApiClient,
+    private val contestsDao: ContestsDao
+) : BaseRepo(){
 
-    suspend fun fetchContests(): List<Contest>{
-        return apiService.getContestsFromApi()
-    }
+    fun getAllContests() = makeRequestAndSave(
+        databaseQuery = {
+            contestsDao.getAllContests()
+        },
+        networkCall = {
+            arenaApiClient.getAllContests()
+        },
+        saveCallResult = {
+            contestsDao.insertContests(it)
+        }
+    )
 }

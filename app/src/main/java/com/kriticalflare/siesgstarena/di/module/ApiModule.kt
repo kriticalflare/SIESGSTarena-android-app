@@ -1,6 +1,7 @@
 package com.kriticalflare.siesgstarena.di.module
 
 import com.kriticalflare.siesgstarena.network.ApiService
+import com.kriticalflare.siesgstarena.network.ArenaApiClient
 import com.kriticalflare.siesgstarena.network.RequestInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +27,9 @@ val apiModule = module{
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
-    single {
+    factory {
         get<Retrofit>().create(ApiService::class.java)
     }
+
+    factory { ArenaApiClient(get()) }
 }

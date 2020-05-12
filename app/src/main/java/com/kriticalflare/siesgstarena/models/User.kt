@@ -1,10 +1,17 @@
 package com.kriticalflare.siesgstarena.models
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import com.squareup.moshi.*
+import kotlinx.coroutines.joinAll
+import java.util.*
 
+@Entity(tableName = "users")
 @JsonClass(generateAdapter = true)
 data class User(
+    @PrimaryKey
     @field:Json(name="_id") val id: String,
     @field:Json(name="name") val name: String,
     @field:Json(name="username") val username: String,
@@ -15,3 +22,25 @@ data class User(
     @field:Json(name="codeforcesLink") val codeforcesLink: String?,
     @field:Json(name="githubLink") val githubLink: String?
 )
+
+class UserListTypeConverter(){
+    private val moshi = Moshi.Builder().build()
+    private val userListAdapter: JsonAdapter<List<User>> = moshi.adapter(Types.newParameterizedType(
+        List::class.java,
+        User::class.java
+    ))
+
+    @TypeConverter
+    fun userListToString(users: List<User>): String?{
+        return userListAdapter.toJson(users)
+    }
+
+    @TypeConverter
+    fun fromStringToUserList(data: String?): List<User>? {
+        if (data == null) {
+            return Collections.emptyList()
+        }
+        return userListAdapter.fromJson(data)
+    }
+
+}

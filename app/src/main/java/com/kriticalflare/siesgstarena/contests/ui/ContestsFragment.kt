@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.kriticalflare.siesgstarena.databinding.FragmentContestsBinding
+import com.kriticalflare.siesgstarena.models.Result
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContestsFragment : Fragment() {
@@ -30,19 +32,21 @@ class ContestsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        when this vs viewLifeCycleOwner
-        contestsViewModel.contestsList.observe(viewLifecycleOwner, Observer { contests ->
-            when {
-//                try isNullorEmpty , ideally we dont send null but i am bad and also livedata
-                contests.isEmpty() -> {
-                    binding.loadingProgressbar.visibility = View.VISIBLE
-                    binding.contestsRecycler.visibility = View.GONE
-                }
-                contests.isNotEmpty() -> {
-                    binding.contestsRecycler.adapter = ContestsAdapter(contests)
+        contestsViewModel.getAllContests().observe(viewLifecycleOwner, Observer { result ->
+            when(result.status){
+                Result.Status.SUCCESS -> {
+                    binding.contestsRecycler.adapter = result.data?.let { ContestsAdapter(it) }
                     binding.contestsRecycler.layoutManager = LinearLayoutManager(context)
                     binding.contestsRecycler.setHasFixedSize(true)
                     binding.loadingProgressbar.visibility = View.GONE
                     binding.contestsRecycler.visibility = View.VISIBLE
+                }
+                Result.Status.ERROR -> {
+                    Toast.makeText(context,result.message,Toast.LENGTH_LONG).show()
+                }
+                Result.Status.LOADING -> {
+                    binding.loadingProgressbar.visibility = View.VISIBLE
+                    binding.contestsRecycler.visibility = View.GONE
                 }
             }
         })
