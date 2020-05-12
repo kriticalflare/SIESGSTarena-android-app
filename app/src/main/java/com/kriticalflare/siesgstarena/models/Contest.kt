@@ -10,28 +10,28 @@ data class Contest(
 
     @PrimaryKey
     @field:Json(name = "_id")
-    var id: String,
+    val id: String,
 
     @field:Json(name = "name")
-    var name: String,
+    val name: String,
 
     @field:Json(name = "code")
-    var code: String?,
+    val code: String?,
 
     @field:Json(name = "description")
-    var description: String,
+    val description: String,
 
     @field:Json(name = "type")
-    var contestType: ContestType,
+    val contestType: ContestType,
 
     @field:Json(name = "startsAt")
-    var startsAt: String,
+    val startsAt: String,
 
     @field:Json(name = "endsAt")
-    var endsAt: String,
+    val endsAt: String,
 
     @field:Json(name = "contestAdmin")
-    var contestAdmins: List<User>
+    val contestAdmins: List<User>
 )
 
 
