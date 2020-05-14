@@ -1,13 +1,23 @@
 package com.kriticalflare.siesgstarena.problemset.repository
 
-import com.kriticalflare.siesgstarena.models.Problem
-import com.kriticalflare.siesgstarena.network.ApiService
+import com.kriticalflare.siesgstarena.database.ProblemsDao
+import com.kriticalflare.siesgstarena.network.ArenaApiClient
+import com.kriticalflare.siesgstarena.repository.BaseRepo
 
 class ProblemsRepository(
-    private val apiService: ApiService
-) {
+    private val apiClient: ArenaApiClient,
+    private val problemsDao: ProblemsDao
+) : BaseRepo() {
 
-    suspend fun fetchProblemSet(): List<Problem>{
-        return apiService.getProblemSetFromApi()
-    }
+    fun getAllProblemSets() = makeRequestAndSave(
+        databaseQuery = {
+            problemsDao.getAllProblem()
+        },
+        networkCall = {
+            apiClient.getAllProblemSet()
+        },
+        saveCallResult = {
+            problemsDao.insertProblems(it)
+        }
+    )
 }

@@ -1,16 +1,17 @@
 package com.kriticalflare.siesgstarena.database
 
 import androidx.room.*
-import com.kriticalflare.siesgstarena.models.Contest
-import com.kriticalflare.siesgstarena.models.ContestTypeConverter
-import com.kriticalflare.siesgstarena.models.UserListTypeConverter
+import com.kriticalflare.siesgstarena.models.*
 
-@Database(entities = [Contest::class], version = 1, exportSchema = false)
+@Database(entities = [Contest::class,Problem::class], version = 1, exportSchema = false)
 @TypeConverters(
     ContestTypeConverter::class,
-    UserListTypeConverter::class
+    UserListTypeConverter::class,
+    TagsTypeConverter::class
 )
 abstract class ArenaDatabase : RoomDatabase() {
 
     abstract fun contestDao(): ContestsDao
+
+    abstract fun problemsDao(): ProblemsDao
 }

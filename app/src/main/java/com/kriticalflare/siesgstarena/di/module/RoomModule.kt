@@ -16,4 +16,8 @@ val roomModule = module{
     single{
         get<ArenaDatabase>().contestDao()
     }
+
+    single {
+        get<ArenaDatabase>().problemsDao()
+    }
 }

@@ -5,7 +5,7 @@ class ArenaApiClient(private val apiService: ApiService): BaseApiClient(){
         apiService.getContestsFromApi()
     }
 
-//    suspend fun getAllProblemSet() = getResult {
-//        apiService.getProblemSetFromApi()
-//    }
+    suspend fun getAllProblemSet() = getResult {
+        apiService.getProblemSetFromApi()
+    }
 }

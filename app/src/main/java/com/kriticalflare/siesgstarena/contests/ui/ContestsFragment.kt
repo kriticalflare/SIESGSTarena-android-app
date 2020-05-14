@@ -35,7 +35,7 @@ class ContestsFragment : Fragment() {
         contestsViewModel.getAllContests().observe(viewLifecycleOwner, Observer { result ->
             when(result.status){
                 Result.Status.SUCCESS -> {
-                    binding.contestsRecycler.adapter = result.data?.let { ContestsAdapter(it) }
+                    binding.contestsRecycler.adapter = result.data?.let { ContestsAdapter(it.reversed()) }
                     binding.contestsRecycler.layoutManager = LinearLayoutManager(context)
                     binding.contestsRecycler.setHasFixedSize(true)
                     binding.loadingProgressbar.visibility = View.GONE

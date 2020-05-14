@@ -9,5 +9,5 @@ val repositoryModule = module {
     factory {
         ContestsRepository(get(),get())
     }
-    factory { ProblemsRepository(get()) }
+    factory { ProblemsRepository(get(), get()) }
 }

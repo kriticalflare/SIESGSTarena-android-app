@@ -10,5 +10,5 @@ interface ApiService{
     suspend fun getContestsFromApi(): Response<List<Contest>>
 
     @GET("problems")
-    suspend fun getProblemSetFromApi(): List<Problem>
+    suspend fun getProblemSetFromApi(): Response<List<Problem>>
 }
