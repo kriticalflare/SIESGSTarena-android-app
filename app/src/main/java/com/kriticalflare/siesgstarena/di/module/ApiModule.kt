@@ -3,6 +3,7 @@ package com.kriticalflare.siesgstarena.di.module
 import com.kriticalflare.siesgstarena.network.ApiService
 import com.kriticalflare.siesgstarena.network.ArenaApiClient
 import com.kriticalflare.siesgstarena.network.RequestInterceptor
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -32,4 +33,8 @@ val apiModule = module{
     }
 
     factory { ArenaApiClient(get()) }
+
+    single {
+        Moshi.Builder().build()
+    }
 }

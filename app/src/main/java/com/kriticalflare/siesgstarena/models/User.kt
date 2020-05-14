@@ -6,6 +6,9 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.squareup.moshi.*
 import kotlinx.coroutines.joinAll
+import org.koin.core.KoinComponent
+import org.koin.core.context.GlobalContext.get
+import org.koin.core.inject
 import java.util.*
 
 @Entity(tableName = "users")
@@ -23,8 +26,8 @@ data class User(
     @field:Json(name="githubLink") val githubLink: String?
 )
 
-class UserListTypeConverter(){
-    private val moshi = Moshi.Builder().build()
+class UserListTypeConverter : KoinComponent{
+    private val moshi:Moshi by inject()
     private val userListAdapter: JsonAdapter<List<User>> = moshi.adapter(Types.newParameterizedType(
         List::class.java,
         User::class.java

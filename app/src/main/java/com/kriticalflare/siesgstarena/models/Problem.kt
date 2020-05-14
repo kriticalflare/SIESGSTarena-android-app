@@ -5,6 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import com.squareup.moshi.*
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import java.util.*
 
 @Entity(tableName = "problems")
@@ -31,9 +33,9 @@ data class Problem(
     val tags: List<String>
 )
 
-class TagsTypeConverter{
+class TagsTypeConverter : KoinComponent{
 
-    private val moshi = Moshi.Builder().build()
+    private val moshi:Moshi by inject()
     private val tagsListAdapter: JsonAdapter<List<String>> = moshi.adapter(Types.newParameterizedType(
         List::class.java,
         String::class.java
