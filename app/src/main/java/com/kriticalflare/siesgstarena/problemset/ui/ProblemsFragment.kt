@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.kriticalflare.siesgstarena.databinding.FragmentProblemsBinding
-import com.kriticalflare.siesgstarena.models.Result
+import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -36,7 +36,7 @@ class ProblemsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         problemsViewModel.getAllProblemSets().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
-                Result.Status.SUCCESS -> {
+                Resource.Status.SUCCESS -> {
                     binding.problemsRecycler.adapter =
                         result.data?.let { ProblemsAdapter(it.reversed(), requireContext()) }
                     binding.problemsRecycler.layoutManager = LinearLayoutManager(context)
@@ -44,10 +44,10 @@ class ProblemsFragment : Fragment() {
                     binding.loadingProgressbar.visibility = View.GONE
                     binding.problemsRecycler.visibility = View.VISIBLE
                 }
-                Result.Status.ERROR -> {
+                Resource.Status.ERROR -> {
                     Toast.makeText(context, result.message, Toast.LENGTH_LONG).show()
                 }
-                Result.Status.LOADING -> {
+                Resource.Status.LOADING -> {
                     binding.loadingProgressbar.visibility = View.VISIBLE
                     binding.problemsRecycler.visibility = View.GONE
                 }

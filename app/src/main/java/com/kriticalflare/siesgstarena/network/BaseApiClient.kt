@@ -2,31 +2,31 @@ package com.kriticalflare.siesgstarena.network
 
 import com.kriticalflare.siesgstarena.BuildConfig
 import retrofit2.Response
-import com.kriticalflare.siesgstarena.models.Result
+import com.kriticalflare.siesgstarena.models.Resource
 
 
 
 open class BaseApiClient {
 
-    protected suspend fun <T> getResult(request: suspend () -> Response<T>): Result<T> {
+    protected suspend fun <T> getResult(request: suspend () -> Response<T>): Resource<T> {
         try {
             val response = request()
             return if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    Result.success(body)
+                    Resource.success(body)
                 } else {
-                    Result.error("Server response error")
+                    Resource.error("Server response error")
                 }
             } else {
-                Result.error("${response.code()} ${response.message()}")
+                Resource.error("${response.code()} ${response.message()}")
             }
         } catch (e: Exception) {
             val errorMessage = e.message ?: e.toString()
             return if (BuildConfig.DEBUG) {
-                Result.error("Network called failed with message $errorMessage")
+                Resource.error("Network called failed with message $errorMessage")
             } else {
-                Result.error("Check your internet connection!")
+                Resource.error("Check your internet connection!")
             }
         }
     }

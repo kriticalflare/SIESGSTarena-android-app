@@ -4,22 +4,22 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.kriticalflare.siesgstarena.models.Result
+import com.kriticalflare.siesgstarena.models.Resource
 import kotlinx.coroutines.Dispatchers
 
 open class BaseRepo {
 
-    protected fun <T> makeRequest(request: suspend () -> Result<T>) = liveData {
-        emit(Result.loading())
+    protected fun <T> makeRequest(request: suspend () -> Resource<T>) = liveData {
+        emit(Resource.loading())
 
         val response = request.invoke()
 
         when (response.status) {
-            Result.Status.SUCCESS -> {
-                emit(Result.success(response.data))
+            Resource.Status.SUCCESS -> {
+                emit(Resource.success(response.data))
             }
-            Result.Status.ERROR -> {
-                emit(Result.error(response.message!!))
+            Resource.Status.ERROR -> {
+                emit(Resource.error(response.message!!))
             }
             else -> { }
         }
@@ -27,22 +27,24 @@ open class BaseRepo {
 
     protected fun <T, A> makeRequestAndSave(
         databaseQuery: () -> LiveData<T>,
-        networkCall: suspend () -> Result<A>,
+        networkCall: suspend () -> Resource<A>,
         saveCallResult: suspend (A) -> Unit
-    ): LiveData<Result<T>> = liveData(Dispatchers.IO) {
-        emit(Result.loading())
+    ): LiveData<Resource<T>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading())
 
-        val source = databaseQuery.invoke().map { Result.success(it) }
+        val source = databaseQuery.invoke().map {
+            Log.d("SIESDB","db ${it.toString()}")
+            Resource.success(it) }
         emitSource(source)
 
         val response = networkCall.invoke()
         when (response.status) {
-            Result.Status.SUCCESS -> {
+            Resource.Status.SUCCESS -> {
                 Log.d("Response",response.data.toString())
                 saveCallResult(response.data!!)
             }
-            Result.Status.ERROR -> {
-                emit(Result.error(response.message!!))
+            Resource.Status.ERROR -> {
+                emit(Resource.error(response.message!!))
                 emitSource(source)
             }
             else -> {}

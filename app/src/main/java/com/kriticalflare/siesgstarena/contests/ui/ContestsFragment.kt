@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.kriticalflare.siesgstarena.databinding.FragmentContestsBinding
-import com.kriticalflare.siesgstarena.models.Result
+import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContestsFragment : Fragment() {
@@ -34,17 +34,17 @@ class ContestsFragment : Fragment() {
 //        when this vs viewLifeCycleOwner
         contestsViewModel.getAllContests().observe(viewLifecycleOwner, Observer { result ->
             when(result.status){
-                Result.Status.SUCCESS -> {
+                Resource.Status.SUCCESS -> {
                     binding.contestsRecycler.adapter = result.data?.let { ContestsAdapter(it.reversed()) }
                     binding.contestsRecycler.layoutManager = LinearLayoutManager(context)
                     binding.contestsRecycler.setHasFixedSize(true)
                     binding.loadingProgressbar.visibility = View.GONE
                     binding.contestsRecycler.visibility = View.VISIBLE
                 }
-                Result.Status.ERROR -> {
+                Resource.Status.ERROR -> {
                     Toast.makeText(context,result.message,Toast.LENGTH_LONG).show()
                 }
-                Result.Status.LOADING -> {
+                Resource.Status.LOADING -> {
                     binding.loadingProgressbar.visibility = View.VISIBLE
                     binding.contestsRecycler.visibility = View.GONE
                 }
