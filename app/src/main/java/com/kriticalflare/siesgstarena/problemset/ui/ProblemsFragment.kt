@@ -53,6 +53,14 @@ class ProblemsFragment : Fragment() {
                 }
             }
         })
+
+        binding.problemsRefresh.setOnRefreshListener {
+            problemsViewModel.refreshProblemSet()
+            val r = Runnable {
+                binding.problemsRefresh.isRefreshing = false
+            }
+            binding.problemsRefresh.postDelayed(r, 1000)
+        }
     }
 
     override fun onDestroy() {

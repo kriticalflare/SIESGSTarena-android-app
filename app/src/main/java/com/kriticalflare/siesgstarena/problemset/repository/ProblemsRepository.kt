@@ -20,4 +20,13 @@ class ProblemsRepository(
             problemsDao.insertProblems(it)
         }
     )
+
+    suspend fun refreshProblemSet() = refreshAndSave(
+        networkCall = {
+            apiClient.getAllProblemSet()
+        },
+        saveCallResult = {
+            problemsDao.insertProblems(it)
+        }
+    )
 }

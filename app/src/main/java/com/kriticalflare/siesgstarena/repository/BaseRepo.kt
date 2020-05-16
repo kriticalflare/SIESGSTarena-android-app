@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import com.kriticalflare.siesgstarena.models.Resource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 open class BaseRepo {
 
@@ -46,6 +47,20 @@ open class BaseRepo {
             Resource.Status.ERROR -> {
                 emit(Resource.error(response.message!!))
                 emitSource(source)
+            }
+            else -> {}
+        }
+    }
+
+    protected suspend fun <A> refreshAndSave(
+        networkCall: suspend () -> Resource<A>,
+        saveCallResult: suspend (A) -> Unit
+    ) {
+        val response = networkCall.invoke()
+        when (response.status) {
+            Resource.Status.SUCCESS -> {
+                Log.d("Response",response.data.toString())
+                saveCallResult(response.data!!)
             }
             else -> {}
         }

@@ -50,6 +50,14 @@ class ContestsFragment : Fragment() {
                 }
             }
         })
+
+        binding.contestsRefresh.setOnRefreshListener {
+            contestsViewModel.refreshContests()
+            val r = Runnable {
+                binding.contestsRefresh.isRefreshing = false
+            }
+            binding.contestsRefresh.postDelayed(r, 1000)
+        }
     }
 
     override fun onDestroy() {

@@ -20,4 +20,13 @@ class ContestsRepository(
             contestsDao.insertContests(it)
         }
     )
+
+    suspend fun refreshContests() = refreshAndSave(
+        networkCall = {
+            arenaApiClient.getAllContests()
+        },
+        saveCallResult = {
+            contestsDao.insertContests(it)
+        }
+    )
 }
