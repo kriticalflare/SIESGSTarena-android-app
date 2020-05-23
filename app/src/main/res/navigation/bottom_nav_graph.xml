@@ -14,7 +14,11 @@
         android:id="@+id/usersFragment"
         android:name="com.kriticalflare.siesgstarena.users.ui.UsersFragment"
         android:label="Users"
-        tools:layout="@layout/fragment_users" />
+        tools:layout="@layout/fragment_users">
+        <deepLink
+            android:id="@+id/user_profile_deeplink"
+            app:uri="http://arena.siesgst.ac.in/profile/{userId}" />
+    </fragment>
     <fragment
         android:id="@+id/problemsFragment"
         android:name="com.kriticalflare.siesgstarena.problemset.ui.ProblemsFragment"
@@ -24,4 +28,9 @@
             android:id="@+id/deepLink"
             app:uri="siesgstarena://problem_set" />
     </fragment>
+    <fragment
+        android:id="@+id/blogsFragment"
+        android:name="com.kriticalflare.siesgstarena.blogs.ui.BlogsFragment"
+        android:label="Blogs"
+        tools:layout="@layout/fragment_blogs" />
 </navigation>

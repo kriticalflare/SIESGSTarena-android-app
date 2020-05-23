@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val roomModule = module{
     single {
-       Room.databaseBuilder(androidApplication(),ArenaDatabase::class.java, "arena")
+       Room.databaseBuilder(androidApplication(),ArenaDatabase::class.java, "siesgstarena")
            .fallbackToDestructiveMigration()
            .build()
     }
@@ -19,5 +19,9 @@ val roomModule = module{
 
     single {
         get<ArenaDatabase>().problemsDao()
+    }
+
+    single {
+        get<ArenaDatabase>().blogsDao()
     }
 }

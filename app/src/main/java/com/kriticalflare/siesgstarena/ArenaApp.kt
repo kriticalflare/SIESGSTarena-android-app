@@ -5,6 +5,7 @@ import androidx.work.*
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.kriticalflare.siesgstarena.workers.ContestsWorker
 import com.kriticalflare.siesgstarena.di.AppComponent
+import com.kriticalflare.siesgstarena.workers.BlogsWorker
 import com.kriticalflare.siesgstarena.workers.ProblemSetWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +32,7 @@ class ArenaApp : Application(), Configuration.Provider{
         CoroutineScope(Dispatchers.Default).launch {
             setupContestsWorker()
             setupProblemsWorker()
+            setupBlogsWorker()
         }
     }
 
@@ -65,6 +67,24 @@ class ArenaApp : Application(), Configuration.Provider{
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "ProblemSet_Worker",
+            ExistingPeriodicWorkPolicy.KEEP,
+            request
+        )
+    }
+
+    private fun setupBlogsWorker(){
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresBatteryNotLow(true)
+            .setRequiresStorageNotLow(true)
+            .build()
+
+        val request = PeriodicWorkRequestBuilder<BlogsWorker>(16, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "Blogs_Worker",
             ExistingPeriodicWorkPolicy.KEEP,
             request
         )

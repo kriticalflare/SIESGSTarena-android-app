@@ -1,5 +1,6 @@
 package com.kriticalflare.siesgstarena.di.module
 
+import com.kriticalflare.siesgstarena.blogs.ui.BlogsViewModel
 import com.kriticalflare.siesgstarena.contests.ui.ContestsViewModel
 import com.kriticalflare.siesgstarena.problemset.ui.ProblemsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -11,5 +12,8 @@ val viewModelModule = module {
     }
     viewModel {
         ProblemsViewModel(get())
+    }
+    viewModel {
+        BlogsViewModel(get())
     }
 }

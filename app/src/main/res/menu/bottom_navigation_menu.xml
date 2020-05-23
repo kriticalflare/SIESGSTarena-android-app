@@ -15,8 +15,15 @@
         app:showAsAction="never"
         android:visible="false" />
     <item
+        android:id="@+id/blogsFragment"
+        android:icon="@drawable/ic_blogs_24dp"
+        android:title="Blogs"
+        app:showAsAction="never"
+        android:visible="false" />
+    <item
         android:id="@+id/usersFragment"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Users"
+        app:showAsAction="never"
         android:visible="false" />
 </menu>

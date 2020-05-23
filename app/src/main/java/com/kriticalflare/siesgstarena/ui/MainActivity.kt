@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             topLevelDestinationIds = setOf(
                 R.id.contestsFragment,
                 R.id.problemsFragment,
+                R.id.blogsFragment,
                 R.id.usersFragment
             )
         )
