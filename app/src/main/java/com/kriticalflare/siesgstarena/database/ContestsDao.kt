@@ -17,4 +17,7 @@ interface ContestsDao{
 
     @Query("DELETE FROM contests")
     fun deleteAllContests()
+
+    @Query("SELECT * FROM contests")
+    fun getContestsWidget(): List<Contest>
 }

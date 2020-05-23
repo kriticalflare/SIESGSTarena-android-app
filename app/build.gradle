@@ -67,7 +67,7 @@ dependencies {
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha02"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha03"
 
     // Date parsing
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
