@@ -88,6 +88,9 @@ dependencies {
     // Workmanager
     implementation "androidx.work:work-runtime-ktx:$work_version"
 
+    // Timeago
+    implementation "com.github.marlonlom:timeago:$timeago_version"
+
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.google.android.material.chip.Chip
 import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.databinding.BlogItemBinding
@@ -38,27 +39,24 @@ class BlogsAdapter(private val data: List<Blog>, private val context: Context): 
         private val binding = BlogItemBinding.bind(itemView)
 
         fun bind(data: Blog) {
-            print(ZoneId.systemDefault())
+
+            val dateFormatter = DateTimeFormatter.ofPattern(
+                "EEE dd/MM/yy H:mm a",
+                Locale.ENGLISH
+            )
+
             val formattedCreatedAt: String = Instant.parse(data.createdAt)
                 .atZone(ZoneId.systemDefault())
-                .format(
-                    DateTimeFormatter.ofPattern(
-                        "EEE dd/MM/yy H:mm a",
-                        Locale.ENGLISH
-                    )
-                )
-            val formattedUpdatedAt: String = Instant.parse(data.updatedAt)
+                .format(dateFormatter)
+
+            val recentActivityEpochMilli = Instant.parse(data.updatedAt)
                 .atZone(ZoneId.systemDefault())
-                .format(
-                    DateTimeFormatter.ofPattern(
-                        "EEE dd/MM/yy H:mm a",
-                        Locale.ENGLISH
-                    )
-                )
+                .toEpochSecond().times(1000)
+
             binding.blogName.text = data.title
             binding.blogAuthor.text = data.owner.name
             binding.blogPostedDate.text = context.getString(R.string.blogs_posted_on, formattedCreatedAt)
-            binding.blogRecentActivity.text = context.getString(R.string.blogs_recent_activity, formattedUpdatedAt)
+            binding.blogRecentActivity.text = context.getString(R.string.blogs_recent_activity, TimeAgo.using(recentActivityEpochMilli))
             binding.blogUpvoteCount.text = data.upvotes.toString()
             binding.blogDownvoteCount.text = data.downvotes.toString()
 

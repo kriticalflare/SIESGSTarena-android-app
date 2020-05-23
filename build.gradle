@@ -34,4 +34,5 @@ ext {
     room_version = "2.2.5"
     moshi_version = "1.9.2"
     work_version = "2.3.4"
+    timeago_version = "4.0.3"
 }
