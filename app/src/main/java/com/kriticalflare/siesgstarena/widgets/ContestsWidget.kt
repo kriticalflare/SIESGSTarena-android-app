@@ -1,12 +1,16 @@
 package com.kriticalflare.siesgstarena.widgets
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
+import android.widget.Toast
 import com.kriticalflare.siesgstarena.R
+import com.kriticalflare.siesgstarena.ui.MainActivity
+
 
 /**
  * Implementation of App Widget functionality.
@@ -26,6 +30,19 @@ class ContestsWidget : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        if (intent!!.action.equals(CONTEST_WIDGET_ACTION)) {
+            val openActivityIntent = Intent(context, MainActivity::class.java)
+            openActivityIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context?.startActivity(openActivityIntent)
+        }
+        super.onReceive(context, intent)
+    }
+
+    companion object {
+        const val CONTEST_WIDGET_ACTION = "com.kriticalflare.siesgstarena.CONTEST_WIDGET_ACTION"
+    }
 }
 
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
@@ -34,12 +51,19 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
     serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
     serviceIntent.data = Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME))
 
-    val widgetText = context.getString(R.string.appwidget_text)
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.contests_widget)
     views.setRemoteAdapter(R.id.contest_widget_listview, serviceIntent)
     views.setEmptyView(R.id.contest_widget_listview,R.id.contest_widget_emptyview)
-//    views.setTextViewText(R.id.appwidget_text, widgetText)
+
+    val clickIntent = Intent(context, ContestsWidget::class.java)
+    clickIntent.action = ContestsWidget.CONTEST_WIDGET_ACTION
+    clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+    val clickPendingIntent = PendingIntent.getBroadcast(
+        context, 0, clickIntent,
+        PendingIntent.FLAG_UPDATE_CURRENT
+    )
+    views.setPendingIntentTemplate(R.id.contest_widget_listview, clickPendingIntent)
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

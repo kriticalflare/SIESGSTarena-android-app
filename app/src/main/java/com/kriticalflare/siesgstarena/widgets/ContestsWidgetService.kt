@@ -67,6 +67,10 @@ class ContestsWidgetService : RemoteViewsService() {
             remoteViews.setTextViewText(R.id.contest_widget_title, data?.get(position)?.name)
 
             remoteViews.setTextViewText(R.id.contest_widget_time, "Starts at: $formattedStartsAt")
+
+            val onClickIntent = Intent()
+            remoteViews.setOnClickFillInIntent(R.id.contest_widget_item_root,onClickIntent)
+
             return remoteViews
         }
 
