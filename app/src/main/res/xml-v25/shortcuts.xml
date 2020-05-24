@@ -17,5 +17,22 @@
              they launch this shortcut. -->
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
+    <shortcut
+        android:shortcutId="shortcut_blogs"
+        android:enabled="true"
+        android:icon="@drawable/ic_blogs_24dp"
+        android:shortcutShortLabel="@string/blogs_shortcut_short_label"
+        android:shortcutLongLabel="@string/blogs_shortcut_long_label"
+        android:shortcutDisabledMessage="@string/blogs_shortcut_disabled">
+        <intent
+            android:action="com.kriticalflare.siesgstarena.action.BLOGS"
+            android:targetPackage="com.kriticalflare.siesgstarena"
+            android:targetClass="com.kriticalflare.siesgstarena.ui.MainActivity"
+            android:data="siesgstarena://blogs" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
     <!-- Specify more shortcuts here. -->
 </shortcuts>

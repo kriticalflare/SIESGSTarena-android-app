@@ -6,6 +6,9 @@
     <string name="problemset_shortcut_short_label">Problem set</string>
     <string name="problemset_shortcut_long_label">Problems from past contests</string>
     <string name="problemset_shortcut_disabled">Shortcut is disabled!</string>
+    <string name="blogs_shortcut_short_label">Blogs</string>
+    <string name="blogs_shortcut_long_label">Blogs and Editorials</string>
+    <string name="blogs_shortcut_disabled">Shortcut is disabled!</string>
     <string name="blogs_posted_on">Posted on : %1$s</string>
     <string name="blogs_recent_activity">Recent Activity: %1$s</string>
     <string name="appwidget_text">EXAMPLE</string>

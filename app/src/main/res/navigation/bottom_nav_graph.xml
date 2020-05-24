@@ -25,12 +25,16 @@
         android:label="Problem Sets"
         tools:layout="@layout/fragment_problems">
         <deepLink
-            android:id="@+id/deepLink"
+            android:id="@+id/problemset_deepLink"
             app:uri="siesgstarena://problem_set" />
     </fragment>
     <fragment
         android:id="@+id/blogsFragment"
         android:name="com.kriticalflare.siesgstarena.blogs.ui.BlogsFragment"
         android:label="Blogs"
-        tools:layout="@layout/fragment_blogs" />
+        tools:layout="@layout/fragment_blogs" >
+        <deepLink
+            android:id="@+id/blogs_deepLink"
+            app:uri="siesgstarena://blogs" />
+    </fragment>
 </navigation>
