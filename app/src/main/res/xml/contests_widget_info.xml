@@ -3,7 +3,7 @@
     android:minWidth="110dp"
     android:minHeight="110dp"
     android:updatePeriodMillis="1800000"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/contest_widget_preview"
     android:initialLayout="@layout/contests_widget"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"

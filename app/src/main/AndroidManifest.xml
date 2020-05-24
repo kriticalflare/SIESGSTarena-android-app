@@ -28,7 +28,7 @@
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"
             tools:node="remove" />
-        <receiver android:name=".widgets.ContestsWidget">
+        <receiver android:name=".widgets.ContestsWidget" android:label="Upcoming Contests">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
