@@ -14,4 +14,6 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="contests_widget_empty_string">No contests found! \n Check internet</string>
+    <string name="contests_channel_name">Upcoming Contests</string>
+    <string name="contests_channel_id">contests_channel</string>
 </resources>
