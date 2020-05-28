@@ -48,7 +48,7 @@ class ArenaApp : Application(), Configuration.Provider {
             .setRequiresStorageNotLow(true)
             .build()
 
-        val request = PeriodicWorkRequestBuilder<ContestsWorker>(15, TimeUnit.MINUTES)
+        val request = PeriodicWorkRequestBuilder<ContestsWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
             .build()
 
@@ -66,7 +66,7 @@ class ArenaApp : Application(), Configuration.Provider {
             .setRequiresStorageNotLow(true)
             .build()
 
-        val request = PeriodicWorkRequestBuilder<ProblemSetWorker>(16, TimeUnit.MINUTES)
+        val request = PeriodicWorkRequestBuilder<ProblemSetWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
             .build()
 
@@ -84,7 +84,7 @@ class ArenaApp : Application(), Configuration.Provider {
             .setRequiresStorageNotLow(true)
             .build()
 
-        val request = PeriodicWorkRequestBuilder<BlogsWorker>(16, TimeUnit.MINUTES)
+        val request = PeriodicWorkRequestBuilder<BlogsWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
             .build()
 
