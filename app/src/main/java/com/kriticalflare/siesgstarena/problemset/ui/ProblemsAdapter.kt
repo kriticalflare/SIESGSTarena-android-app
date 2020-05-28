@@ -50,5 +50,4 @@ class ProblemsAdapter(private val data: List<Problem>, private val context: Cont
             }
         }
     }
-
 }

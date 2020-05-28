@@ -1,14 +1,13 @@
 package com.kriticalflare.siesgstarena.blogs.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.kriticalflare.siesgstarena.databinding.FragmentBlogsBinding
 import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +20,8 @@ class BlogsFragment : Fragment() {
     private val blogsViewModel: BlogsViewModel by viewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment

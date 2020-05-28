@@ -1,13 +1,16 @@
 package com.kriticalflare.siesgstarena.models
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import com.squareup.moshi.*
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonClass
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import java.util.Collections
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import java.util.*
 
 @Entity(tableName = "problems")
 @JsonClass(generateAdapter = true)
@@ -33,24 +36,25 @@ data class Problem(
     val tags: List<String>
 )
 
-class TagsTypeConverter : KoinComponent{
+class TagsTypeConverter : KoinComponent {
 
-    private val moshi:Moshi by inject()
-    private val tagsListAdapter: JsonAdapter<List<String>> = moshi.adapter(Types.newParameterizedType(
+    private val moshi: Moshi by inject()
+    private val tagsListAdapter: JsonAdapter<List<String>> = moshi.adapter(
+        Types.newParameterizedType(
         List::class.java,
         String::class.java
     ))
 
     @TypeConverter
-    fun fromTagToString(tags: List<String>): String?{
+    fun fromTagToString(tags: List<String>): String? {
         return tagsListAdapter.toJson(tags)
     }
 
     @TypeConverter
-    fun fromStringToTagsList(data: String?): List<String>?{
-        if(data == null){
+    fun fromStringToTagsList(data: String?): List<String>? {
+        if (data == null) {
             return Collections.emptyList()
         }
-        return  tagsListAdapter.fromJson(data)
+        return tagsListAdapter.fromJson(data)
     }
 }

@@ -1,6 +1,5 @@
 package com.kriticalflare.siesgstarena.models
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

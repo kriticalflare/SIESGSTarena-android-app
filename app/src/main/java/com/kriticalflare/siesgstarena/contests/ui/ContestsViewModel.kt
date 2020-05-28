@@ -11,7 +11,7 @@ class ContestsViewModel(
 ) : ViewModel() {
     fun getAllContests() = contestsRepository.getAllContests()
 
-    fun refreshContests(){
+    fun refreshContests() {
         viewModelScope.launch(Dispatchers.IO) {
             contestsRepository.refreshContests()
         }

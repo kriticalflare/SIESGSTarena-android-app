@@ -7,7 +7,7 @@ import com.kriticalflare.siesgstarena.repository.BaseRepo
 class ContestsRepository(
     private val arenaApiClient: ArenaApiClient,
     private val contestsDao: ContestsDao
-) : BaseRepo(){
+) : BaseRepo() {
 
     fun getAllContests() = makeRequestAndSave(
         databaseQuery = {

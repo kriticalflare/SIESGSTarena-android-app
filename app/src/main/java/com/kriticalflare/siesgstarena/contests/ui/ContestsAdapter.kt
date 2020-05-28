@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kriticalflare.siesgstarena.databinding.ContestItemBinding
 import com.kriticalflare.siesgstarena.models.Contest
+import java.util.Locale
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
 
-class ContestsAdapter(private val data: List<Contest>): RecyclerView.Adapter<ContestsAdapter.ContestsViewHolder>(){
+class ContestsAdapter(private val data: List<Contest>) : RecyclerView.Adapter<ContestsAdapter.ContestsViewHolder>() {
 
     lateinit var binding: ContestItemBinding
 
@@ -19,8 +19,8 @@ class ContestsAdapter(private val data: List<Contest>): RecyclerView.Adapter<Con
         parent: ViewGroup,
         viewType: Int
     ): ContestsViewHolder {
-        binding = ContestItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return  ContestsViewHolder(binding.root)
+        binding = ContestItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ContestsViewHolder(binding.root)
     }
 
     override fun getItemCount(): Int {
@@ -31,7 +31,7 @@ class ContestsAdapter(private val data: List<Contest>): RecyclerView.Adapter<Con
         return holder.bind(data[position])
     }
 
-    class ContestsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ContestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ContestItemBinding.bind(itemView)
 
         fun bind(data: Contest) {
@@ -49,7 +49,5 @@ class ContestsAdapter(private val data: List<Contest>): RecyclerView.Adapter<Con
             binding.contestType.text = data.contestType.name
             binding.contestStartDate.text = formattedDateAndTime
         }
-
     }
-
 }

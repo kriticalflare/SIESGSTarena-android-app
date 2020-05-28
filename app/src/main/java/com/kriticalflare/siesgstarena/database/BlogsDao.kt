@@ -8,7 +8,7 @@ import androidx.room.Query
 import com.kriticalflare.siesgstarena.models.Blog
 
 @Dao
-interface BlogsDao{
+interface BlogsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBlogs(contest: List<Blog>)
 

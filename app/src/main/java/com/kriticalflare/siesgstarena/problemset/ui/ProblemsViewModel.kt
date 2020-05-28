@@ -6,14 +6,13 @@ import com.kriticalflare.siesgstarena.problemset.repository.ProblemsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class ProblemsViewModel(
     private val problemsRepository: ProblemsRepository
 ) : ViewModel() {
 
     fun getAllProblemSets() = problemsRepository.getAllProblemSets()
 
-    fun refreshProblemSet(){
+    fun refreshProblemSet() {
         viewModelScope.launch(Dispatchers.IO) {
             problemsRepository.refreshProblemSet()
         }

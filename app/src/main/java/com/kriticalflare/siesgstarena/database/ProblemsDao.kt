@@ -8,7 +8,7 @@ import androidx.room.Query
 import com.kriticalflare.siesgstarena.models.Problem
 
 @Dao
-interface ProblemsDao{
+interface ProblemsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProblems(contest: List<Problem>)
 

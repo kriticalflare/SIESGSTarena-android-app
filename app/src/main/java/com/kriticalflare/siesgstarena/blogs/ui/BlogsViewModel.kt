@@ -11,7 +11,7 @@ class BlogsViewModel(
 ) : ViewModel() {
     fun getAllBlogs() = blogsRepository.getAllBlogs()
 
-    fun refreshBlogs(){
+    fun refreshBlogs() {
         viewModelScope.launch(Dispatchers.IO) {
             blogsRepository.refreshBlogs()
         }

@@ -16,7 +16,7 @@ import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.ui.MainActivity
 import kotlin.random.Random
 
-class ArenaMessagingService : FirebaseMessagingService(){
+class ArenaMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         Log.d(TAG, "onNewToken: $token")
 
@@ -26,12 +26,12 @@ class ArenaMessagingService : FirebaseMessagingService(){
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
-            //Message Services handle notification
-            showNotification(it.title!!,it.body!!, context = applicationContext)
+            // Message Services handle notification
+            showNotification(it.title!!, it.body!!, context = applicationContext)
         }
     }
 
-    private fun showNotification(title:String, message: String , context: Context){
+    private fun showNotification(title: String, message: String, context: Context) {
         val intent = Intent(context, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(

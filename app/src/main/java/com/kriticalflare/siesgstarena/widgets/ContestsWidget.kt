@@ -7,10 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
-import android.widget.Toast
 import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.ui.MainActivity
-
 
 /**
  * Implementation of App Widget functionality.
@@ -47,14 +45,14 @@ class ContestsWidget : AppWidgetProvider() {
 
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
 
-    val serviceIntent = Intent(context,ContestsWidgetService::class.java)
+    val serviceIntent = Intent(context, ContestsWidgetService::class.java)
     serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
     serviceIntent.data = Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME))
 
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.contests_widget)
     views.setRemoteAdapter(R.id.contest_widget_listview, serviceIntent)
-    views.setEmptyView(R.id.contest_widget_listview,R.id.contest_widget_emptyview)
+    views.setEmptyView(R.id.contest_widget_listview, R.id.contest_widget_emptyview)
 
     val clickIntent = Intent(context, ContestsWidget::class.java)
     clickIntent.action = ContestsWidget.CONTEST_WIDGET_ACTION

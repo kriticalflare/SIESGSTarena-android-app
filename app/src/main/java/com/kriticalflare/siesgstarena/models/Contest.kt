@@ -1,6 +1,8 @@
 package com.kriticalflare.siesgstarena.models
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -34,8 +36,6 @@ data class Contest(
     val contestAdmins: List<User>
 )
 
-
-
 enum class ContestType {
     @field:Json(name = "RATED")
     RATED,
@@ -46,8 +46,6 @@ enum class ContestType {
     @field:Json(name = "UNKNOWN")
     UNKNOWN
 }
-
-
 
 class ContestTypeConverter {
     @TypeConverter

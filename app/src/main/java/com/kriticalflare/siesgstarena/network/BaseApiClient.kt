@@ -1,10 +1,8 @@
 package com.kriticalflare.siesgstarena.network
 
 import com.kriticalflare.siesgstarena.BuildConfig
-import retrofit2.Response
 import com.kriticalflare.siesgstarena.models.Resource
-
-
+import retrofit2.Response
 
 open class BaseApiClient {
 

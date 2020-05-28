@@ -10,12 +10,12 @@ import com.google.android.material.chip.Chip
 import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.databinding.BlogItemBinding
 import com.kriticalflare.siesgstarena.models.Blog
+import java.util.Locale
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
 
-class BlogsAdapter(private val data: List<Blog>, private val context: Context): RecyclerView.Adapter<BlogsAdapter.BlogsViewHolder>(){
+class BlogsAdapter(private val data: List<Blog>, private val context: Context) : RecyclerView.Adapter<BlogsAdapter.BlogsViewHolder>() {
 
     lateinit var binding: BlogItemBinding
 
@@ -23,8 +23,8 @@ class BlogsAdapter(private val data: List<Blog>, private val context: Context): 
         parent: ViewGroup,
         viewType: Int
     ): BlogsViewHolder {
-        binding = BlogItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return  BlogsViewHolder(binding.root,context)
+        binding = BlogItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BlogsViewHolder(binding.root, context)
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +35,7 @@ class BlogsAdapter(private val data: List<Blog>, private val context: Context): 
         return holder.bind(data[position])
     }
 
-    class BlogsViewHolder(itemView: View, private val context: Context): RecyclerView.ViewHolder(itemView){
+    class BlogsViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {
         private val binding = BlogItemBinding.bind(itemView)
 
         fun bind(data: Blog) {
@@ -72,7 +72,5 @@ class BlogsAdapter(private val data: List<Blog>, private val context: Context): 
                 )
             }
         }
-
     }
-
 }

@@ -8,12 +8,12 @@ import android.widget.RemoteViewsService
 import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.database.ContestsDao
 import com.kriticalflare.siesgstarena.models.Contest
+import java.util.Locale
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
 
 class ContestsWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent?): RemoteViewsFactory {
@@ -30,11 +30,9 @@ class ContestsWidgetService : RemoteViewsService() {
                 AppWidgetManager.INVALID_APPWIDGET_ID
             )
 
-
         var data: List<Contest>? = null
 
         override fun onCreate() {
-
         }
 
         override fun getLoadingView(): RemoteViews {
@@ -69,7 +67,7 @@ class ContestsWidgetService : RemoteViewsService() {
             remoteViews.setTextViewText(R.id.contest_widget_time, "Starts at: $formattedStartsAt")
 
             val onClickIntent = Intent()
-            remoteViews.setOnClickFillInIntent(R.id.contest_widget_item_root,onClickIntent)
+            remoteViews.setOnClickFillInIntent(R.id.contest_widget_item_root, onClickIntent)
 
             return remoteViews
         }
@@ -83,9 +81,6 @@ class ContestsWidgetService : RemoteViewsService() {
         }
 
         override fun onDestroy() {
-
         }
-
     }
-
 }

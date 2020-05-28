@@ -13,7 +13,7 @@ import org.koin.core.get
 
 class BlogsWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params),
     KoinComponent {
-    override suspend fun doWork(): Result = coroutineScope{
+    override suspend fun doWork(): Result = coroutineScope {
         val apiClient: ArenaApiClient = get()
         val blogsDao: BlogsDao = get()
 

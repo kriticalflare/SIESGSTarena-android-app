@@ -6,7 +6,7 @@ import com.kriticalflare.siesgstarena.models.Problem
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface ApiService{
+interface ApiService {
     @GET("contests")
     suspend fun getContestsFromApi(): Response<List<Contest>>
 

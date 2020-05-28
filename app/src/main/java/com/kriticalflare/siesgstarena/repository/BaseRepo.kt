@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import com.kriticalflare.siesgstarena.models.Resource
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 open class BaseRepo {
 
@@ -34,14 +33,14 @@ open class BaseRepo {
         emit(Resource.loading())
 
         val source = databaseQuery.invoke().map {
-            Log.d("SIESDB","db ${it.toString()}")
+            Log.d("SIESDB", "db $it")
             Resource.success(it) }
         emitSource(source)
 
         val response = networkCall.invoke()
         when (response.status) {
             Resource.Status.SUCCESS -> {
-                Log.d("Response",response.data.toString())
+                Log.d("Response", response.data.toString())
                 saveCallResult(response.data!!)
             }
             Resource.Status.ERROR -> {
@@ -59,7 +58,7 @@ open class BaseRepo {
         val response = networkCall.invoke()
         when (response.status) {
             Resource.Status.SUCCESS -> {
-                Log.d("Response",response.data.toString())
+                Log.d("Response", response.data.toString())
                 saveCallResult(response.data!!)
             }
             else -> {}

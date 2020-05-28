@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.kriticalflare.siesgstarena.database.ProblemsDao
 import com.kriticalflare.siesgstarena.models.Resource
 import com.kriticalflare.siesgstarena.network.ArenaApiClient
-import com.kriticalflare.siesgstarena.database.ProblemsDao
 import kotlinx.coroutines.coroutineScope
 import org.koin.core.KoinComponent
 import org.koin.core.get

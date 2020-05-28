@@ -1,8 +1,8 @@
 package com.kriticalflare.siesgstarena.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setupNav()
     }
 
-    private fun setupNav(){
+    private fun setupNav() {
         val navController = findNavController(R.id.fragNavHost)
         val appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = setOf(
@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.usersFragment
             )
         )
-        setupActionBarWithNavController(navController,appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 //            Todo: Maybe implement scroll to top of list, issue is how do we the fragment instance
 //             to access the recyclerview or do we have a shared viewmodel which fires an event
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.bottom_navigation_menu,menu)
-        binding.bottomNavView.setupWithNavController(menu!!,findNavController(R.id.fragNavHost))
+        menuInflater.inflate(R.menu.bottom_navigation_menu, menu)
+        binding.bottomNavView.setupWithNavController(menu!!, findNavController(R.id.fragNavHost))
         return true
     }
 }
