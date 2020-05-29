@@ -1,0 +1,47 @@
+name: CI
+
+# Step 1: Choose the branch or branches you want to run this workflow
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Lint Check and build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v1
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      # Step 2: Decode Google services configuration file
+      - name: Decode google-services.json
+        env:
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+        run: echo $GOOGLE_SERVICES > app/google-services.json
+
+      # Step 3: Check the code with ktlint
+      - name: Run Kotlin Linter
+        run: bash ./gradlew ktlintCheck
+
+      # Step 4: Check the code with Android linter
+      - name: Run Android Linter
+        run: bash ./gradlew lint
+
+      # Step 4: Assemble debug apk 
+      - name: Assemble Debug APK
+        run: bash ./gradlew assembleDebug --stacktrace
+
+      # Step 5: Upload build and lint reports
+      - name: Upload build reports
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-reports
+          path: app/build/reports
