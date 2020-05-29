@@ -50,6 +50,7 @@ class ArenaApp : Application(), Configuration.Provider {
 
         val request = PeriodicWorkRequestBuilder<ContestsWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
+            .setInitialDelay(1, TimeUnit.HOURS)
             .build()
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
@@ -68,6 +69,7 @@ class ArenaApp : Application(), Configuration.Provider {
 
         val request = PeriodicWorkRequestBuilder<ProblemSetWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
+            .setInitialDelay(1, TimeUnit.HOURS)
             .build()
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
@@ -86,6 +88,7 @@ class ArenaApp : Application(), Configuration.Provider {
 
         val request = PeriodicWorkRequestBuilder<BlogsWorker>(12, TimeUnit.HOURS)
             .setConstraints(constraints)
+            .setInitialDelay(1, TimeUnit.HOURS)
             .build()
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
