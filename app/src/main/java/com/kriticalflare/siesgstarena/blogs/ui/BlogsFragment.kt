@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.databinding.FragmentBlogsBinding
 import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +36,7 @@ class BlogsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         blogsViewModel.getAllBlogs().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Resource.Status.SUCCESS -> {
@@ -63,5 +69,18 @@ class BlogsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupToolbar() {
+        val toolbar = binding.blogsToolbar
+        val appBarConfiguration = AppBarConfiguration(
+            topLevelDestinationIds = setOf(
+                R.id.contestsFragment,
+                R.id.problemsFragment,
+                R.id.blogsFragment,
+                R.id.usersFragment
+            )
+        )
+        toolbar.setupWithNavController(findNavController(), appBarConfiguration)
     }
 }

@@ -6,24 +6,20 @@
         android:id="@+id/contestsFragment"
         android:icon="@drawable/ic_code_black_24dp"
         android:title="Contests"
-        android:visible="false"
         app:showAsAction="never" />
     <item
         android:id="@+id/problemsFragment"
         android:icon="@drawable/ic_forum_black_24dp"
         android:title="Problems"
-        app:showAsAction="never"
-        android:visible="false" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/blogsFragment"
         android:icon="@drawable/ic_blogs_24dp"
         android:title="Blogs"
-        app:showAsAction="never"
-        android:visible="false" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/usersFragment"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Users"
-        app:showAsAction="never"
-        android:visible="false" />
+        app:showAsAction="never" />
 </menu>

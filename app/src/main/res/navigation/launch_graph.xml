@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/launch_graph"
+    app:startDestination="@id/launchFragment">
+    <action
+        android:id="@+id/splash_to_bottom_nav"
+        app:destination="@id/bottom_nav_graph"
+        app:popUpTo="@id/launch_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/splash_to_onboarding"
+        app:destination="@id/onboarding_graph"
+        app:popUpTo="@id/launch_graph"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/launchFragment"
+        android:name="com.kriticalflare.siesgstarena.launch.ui.LaunchFragment"
+        android:label="fragment_launch"
+        tools:layout="@layout/fragment_launch" >
+    </fragment>
+    <include app:graph="@navigation/bottom_nav_graph"/>
+    <include app:graph="@navigation/onboarding_graph"/>
+</navigation>

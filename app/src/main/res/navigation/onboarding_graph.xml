@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_graph"
+    app:startDestination="@id/onboardingFragment">
+
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.kriticalflare.siesgstarena.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action android:id="@+id/onboarding_to_bottom_nav"
+            app:destination="@+id/bottom_nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <include app:graph="@navigation/bottom_nav_graph"/>
+</navigation>
