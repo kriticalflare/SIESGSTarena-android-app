@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.google.android.material.chip.Chip
 import com.kriticalflare.siesgstarena.R
+import com.kriticalflare.siesgstarena.blogs.usecase.ReadBlogUsecase
 import com.kriticalflare.siesgstarena.databinding.BlogItemBinding
 import com.kriticalflare.siesgstarena.models.Blog
 import java.util.Locale
@@ -32,7 +33,10 @@ class BlogsAdapter(private val data: List<Blog>, private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: BlogsViewHolder, position: Int) {
-        return holder.bind(data[position])
+        holder.bind(data[position])
+        holder.itemView.setOnClickListener {
+            ReadBlogUsecase(data[position], context).openCustomTab()
+        }
     }
 
     class BlogsViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {

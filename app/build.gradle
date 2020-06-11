@@ -99,6 +99,9 @@ dependencies {
     // Firebase Cloud Messaging for push notifs
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
+    // Custom tabs
+    implementation "androidx.browser:browser:1.2.0"
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
