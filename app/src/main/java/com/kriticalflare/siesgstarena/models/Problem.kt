@@ -34,7 +34,9 @@ data class Problem(
 
     @field:Json(name = "tags")
     val tags: List<String>
-)
+) {
+    fun createProblemUrl(): String = "http://arena.siesgst.ac.in/contest/$contestCode/problem/$code"
+}
 
 class TagsTypeConverter : KoinComponent {
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.kriticalflare.siesgstarena.databinding.ProblemItemBinding
 import com.kriticalflare.siesgstarena.models.Problem
+import com.kriticalflare.siesgstarena.problemset.usecase.ReadProblemsUsecase
 
 class ProblemsAdapter(private val data: List<Problem>, private val context: Context) :
     RecyclerView.Adapter<ProblemsAdapter.ProblemsViewHolder>() {
@@ -24,7 +25,10 @@ class ProblemsAdapter(private val data: List<Problem>, private val context: Cont
     }
 
     override fun onBindViewHolder(holder: ProblemsViewHolder, position: Int) {
-        return holder.bind(data = data[position])
+        holder.bind(data = data[position])
+        holder.itemView.setOnClickListener {
+            ReadProblemsUsecase(data[position], context).openCustomTab()
+        }
     }
 
     class ProblemsViewHolder(itemView: View, private val context: Context) :
