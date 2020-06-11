@@ -1,9 +1,11 @@
 package com.kriticalflare.siesgstarena.contests.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kriticalflare.siesgstarena.contests.usecase.ReadContestUsecase
 import com.kriticalflare.siesgstarena.databinding.ContestItemBinding
 import com.kriticalflare.siesgstarena.models.Contest
 import java.util.Locale
@@ -11,7 +13,7 @@ import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
 
-class ContestsAdapter(private val data: List<Contest>) : RecyclerView.Adapter<ContestsAdapter.ContestsViewHolder>() {
+class ContestsAdapter(private val data: List<Contest>, private val context: Context) : RecyclerView.Adapter<ContestsAdapter.ContestsViewHolder>() {
 
     lateinit var binding: ContestItemBinding
 
@@ -28,7 +30,10 @@ class ContestsAdapter(private val data: List<Contest>) : RecyclerView.Adapter<Co
     }
 
     override fun onBindViewHolder(holder: ContestsViewHolder, position: Int) {
-        return holder.bind(data[position])
+        holder.bind(data[position])
+        holder.itemView.setOnClickListener {
+            ReadContestUsecase(data[position], context).openCustomTab()
+        }
     }
 
     class ContestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

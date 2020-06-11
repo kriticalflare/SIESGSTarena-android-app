@@ -18,7 +18,7 @@ data class Contest(
     val name: String,
 
     @field:Json(name = "code")
-    val code: String?,
+    val code: String,
 
     @field:Json(name = "description")
     val description: String,
@@ -34,7 +34,9 @@ data class Contest(
 
     @field:Json(name = "contestAdmin")
     val contestAdmins: List<User>
-)
+) {
+    fun createContestUrl(): String = "http://arena.siesgst.ac.in/contest/$code"
+}
 
 enum class ContestType {
     @field:Json(name = "RATED")
