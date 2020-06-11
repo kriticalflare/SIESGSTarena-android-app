@@ -20,9 +20,9 @@ class ReadContestUsecase(val contest: Contest, val context: Context) {
                 .build()
             customTabsIntent.launchUrl(context, Uri.parse(contest.createContestUrl()))
         } else {
-            val blogIntent =
+            val contestIntent =
                 Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com"))
-            context.startActivity(blogIntent)
+            context.startActivity(contestIntent)
         }
     }
 }

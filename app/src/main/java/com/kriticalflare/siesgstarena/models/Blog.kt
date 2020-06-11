@@ -34,7 +34,5 @@ data class Blog(
     @field:Json(name = "updatedAt")
     val updatedAt: String
 ) {
-    fun createBlogUrl(): String {
-        return "http://arena.siesgst.ac.in/blog/$id"
-    }
+    fun createBlogUrl(): String = "http://arena.siesgst.ac.in/blog/$id"
 }
