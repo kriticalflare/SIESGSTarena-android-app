@@ -76,6 +76,10 @@ Download and install Android Studio from [here](https://developer.android.com/st
 When Android Studio starts up, you will be prompted to create a new project or import an existing project. Select the
 ```import an existing project```, navigate and select the directory where you cloned the project.
 
+**Add firebase to your app**
+
+The app uses Firebase Cloud Messaging for the push notification functionality. To build the app successfully, you will need to create a `google-services.json` using the [firebase documentation](https://firebase.google.com/docs/android/setup)
+
 ## Contributing
 
 Please read the contribution guidelines at [CONTRIBUTING.md](CONTRIBUTING.md).
