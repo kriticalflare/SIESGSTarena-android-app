@@ -1,5 +1,6 @@
 package com.kriticalflare.siesgstarena.di.module
 
+import com.kriticalflare.siesgstarena.ac_stats.repository.StatsRepository
 import com.kriticalflare.siesgstarena.blogs.repository.BlogsRepository
 import com.kriticalflare.siesgstarena.contests.repository.ContestsRepository
 import com.kriticalflare.siesgstarena.problemset.repository.ProblemsRepository
@@ -14,5 +15,8 @@ val repositoryModule = module {
     }
     factory {
         BlogsRepository(get(), get())
+    }
+    single {
+        StatsRepository(get(), get())
     }
 }

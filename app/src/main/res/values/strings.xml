@@ -23,4 +23,7 @@
     <string name="apps_comparator_desc">Want to see the real competition? Try this!</string>
     <string name="apps_comparator_author">By Omkar Prabhu</string>
     <string name="apps_appeal">Have an app idea suitable for SIESGSTarena? Send us an idea or a small POC and we\'ll build that with you! Send us an email</string>
+    <string name="stats_title">Programmers with most AC submissions in respective languages</string>
+    <string name="stats_submission_caption">AC Submissions: </string>
+    <string name="stats_language">Language: </string>
 </resources>

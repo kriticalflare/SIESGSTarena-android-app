@@ -43,4 +43,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(menu!!, findNavController(R.id.fragNavHost))
         return true
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.fragNavHost).navigateUp() ||
+                super.onSupportNavigateUp()
+    }
 }

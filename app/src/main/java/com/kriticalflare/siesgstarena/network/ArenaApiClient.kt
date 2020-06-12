@@ -12,4 +12,8 @@ class ArenaApiClient(private val apiService: ApiService) : BaseApiClient() {
     suspend fun getAllBlogs() = getResult {
         apiService.getBlogsFromApi()
     }
+
+    suspend fun getAllTopStats() = getResult {
+        apiService.getTopAcStats()
+    }
 }

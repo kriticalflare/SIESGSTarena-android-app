@@ -1,5 +1,6 @@
 package com.kriticalflare.siesgstarena.di.module
 
+import com.kriticalflare.siesgstarena.ac_stats.ui.StatsViewModel
 import com.kriticalflare.siesgstarena.blogs.ui.BlogsViewModel
 import com.kriticalflare.siesgstarena.contests.ui.ContestsViewModel
 import com.kriticalflare.siesgstarena.problemset.ui.ProblemsViewModel
@@ -15,5 +16,8 @@ val viewModelModule = module {
     }
     viewModel {
         BlogsViewModel(get())
+    }
+    viewModel {
+        StatsViewModel(get())
     }
 }

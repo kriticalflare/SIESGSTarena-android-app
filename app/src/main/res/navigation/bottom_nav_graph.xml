@@ -41,5 +41,14 @@
         android:id="@+id/appsFragment"
         android:name="com.kriticalflare.siesgstarena.apps.ui.AppsFragment"
         android:label="Apps"
-        tools:layout="@layout/fragment_apps" />
+        tools:layout="@layout/fragment_apps" >
+        <action
+            android:id="@+id/action_appsFragment_to_acStatsFragment"
+            app:destination="@id/acStatsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/acStatsFragment"
+        android:name="com.kriticalflare.siesgstarena.ac_stats.ui.AcStatsFragment"
+        android:label="AC Statistics"
+        tools:layout="@layout/fragment_ac_stats" />
 </navigation>
