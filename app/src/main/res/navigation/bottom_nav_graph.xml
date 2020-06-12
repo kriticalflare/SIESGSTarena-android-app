@@ -37,4 +37,9 @@
             android:id="@+id/blogs_deepLink"
             app:uri="siesgstarena://blogs" />
     </fragment>
+    <fragment
+        android:id="@+id/appsFragment"
+        android:name="com.kriticalflare.siesgstarena.apps.ui.AppsFragment"
+        android:label="Apps"
+        tools:layout="@layout/fragment_apps" />
 </navigation>

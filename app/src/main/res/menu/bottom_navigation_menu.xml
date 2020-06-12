@@ -21,6 +21,13 @@
         app:showAsAction="never"
         android:visible="false" />
     <item
+        android:id="@+id/appsFragment"
+        android:icon="@drawable/ic_apps_24"
+        android:title="Apps"
+        app:showAsAction="never"
+        android:visible="false"
+        />
+    <item
         android:id="@+id/usersFragment"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Users"

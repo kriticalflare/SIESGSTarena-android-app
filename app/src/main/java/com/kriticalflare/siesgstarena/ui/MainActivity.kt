@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.contestsFragment,
                 R.id.problemsFragment,
                 R.id.blogsFragment,
+                R.id.appsFragment,
                 R.id.usersFragment
             )
         )
