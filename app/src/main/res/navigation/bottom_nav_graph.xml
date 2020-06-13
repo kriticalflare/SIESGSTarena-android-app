@@ -45,10 +45,18 @@
         <action
             android:id="@+id/action_appsFragment_to_acStatsFragment"
             app:destination="@id/acStatsFragment" />
+        <action
+            android:id="@+id/action_appsFragment_to_compareFragment"
+            app:destination="@id/compareFragment" />
     </fragment>
     <fragment
         android:id="@+id/acStatsFragment"
         android:name="com.kriticalflare.siesgstarena.ac_stats.ui.AcStatsFragment"
         android:label="AC Statistics"
         tools:layout="@layout/fragment_ac_stats" />
+    <fragment
+        android:id="@+id/compareFragment"
+        android:name="com.kriticalflare.siesgstarena.compare.ui.CompareFragment"
+        android:label="Compare"
+        tools:layout="@layout/fragment_compare" />
 </navigation>

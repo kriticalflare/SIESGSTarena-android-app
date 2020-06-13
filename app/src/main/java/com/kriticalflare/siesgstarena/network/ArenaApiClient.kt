@@ -16,4 +16,8 @@ class ArenaApiClient(private val apiService: ApiService) : BaseApiClient() {
     suspend fun getAllTopStats() = getResult {
         apiService.getTopAcStats()
     }
+
+    suspend fun getComparison(username1: String, username2: String) = getResult {
+        apiService.getComparison(username1, username2)
+    }
 }

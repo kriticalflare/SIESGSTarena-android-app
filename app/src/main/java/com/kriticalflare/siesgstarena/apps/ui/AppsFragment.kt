@@ -29,6 +29,9 @@ class AppsFragment : Fragment() {
         binding.appsAcStatsCard.setOnClickListener {
             findNavController().navigate(R.id.action_appsFragment_to_acStatsFragment)
         }
+        binding.appsComparatorCard.setOnClickListener {
+            findNavController().navigate(R.id.action_appsFragment_to_compareFragment)
+        }
     }
 
     override fun onDestroyView() {

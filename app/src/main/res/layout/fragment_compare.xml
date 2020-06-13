@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".compare.ui.CompareFragment">
+
+    <TextView
+        android:id="@+id/compare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/compare_headline"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/compare_username1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Username 1"
+        android:padding="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/compare_username2"
+        app:layout_constraintTop_toBottomOf="@id/compare">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/compare_username2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Username 2"
+        android:padding="8dp"
+        app:layout_constraintLeft_toRightOf="@id/compare_username1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/compare">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/compare_user1_pic"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginVertical="8dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toStartOf="@+id/compare_user2_pic"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/compare_username1" />
+
+    <ImageView
+        android:id="@+id/compare_user2_pic"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginVertical="8dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/compare_user1_pic"
+        app:layout_constraintTop_toBottomOf="@id/compare_username2" />
+
+    <TextView
+        android:id="@+id/compare_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="16dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_user1_pic"
+        tools:text="Username1 Won!" />
+
+
+    <TextView
+        android:id="@+id/compare_accepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/compare_accepted"
+        app:layout_constraintBottom_toTopOf="@+id/compare_wrong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_result" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/compare_result_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="compare_result,compare_accepted_user1,compare_wrong_user1,
+        compare_compilation_user1,compare_runtime_user1,compare_timelimit_user1,compare_accepted_user2,
+        compare_wrong_user2,compare_compilation_user2,compare_runtime_user2,compare_timelimit_user2,
+        compare_accepted,compare_wrong,compare_compilation,compare_runtime,compare_timelimit" />
+
+    <TextView
+        android:id="@+id/compare_accepted_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_wrong_user1"
+        app:layout_constraintEnd_toStartOf="@+id/compare_accepted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_result"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_wrong_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_compilation_user1"
+        app:layout_constraintEnd_toStartOf="@+id/compare_wrong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_accepted_user1"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_compilation_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_runtime_user1"
+        app:layout_constraintEnd_toStartOf="@+id/compare_compilation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_wrong_user1"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_runtime_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_timelimit_user1"
+        app:layout_constraintEnd_toStartOf="@+id/compare_runtime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_compilation_user1"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_timelimit_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/compare_battle_button"
+        app:layout_constraintEnd_toStartOf="@+id/compare_timelimit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_runtime_user1"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_accepted_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_wrong_user2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_accepted"
+        app:layout_constraintTop_toBottomOf="@+id/compare_result"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_wrong_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_compilation_user2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_wrong"
+        app:layout_constraintTop_toBottomOf="@+id/compare_accepted_user2"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_compilation_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_runtime_user2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_compilation"
+        app:layout_constraintTop_toBottomOf="@+id/compare_wrong_user2"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_runtime_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_timelimit_user2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_runtime"
+        app:layout_constraintTop_toBottomOf="@+id/compare_compilation_user2"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_timelimit_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/compare_battle_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_timelimit"
+        app:layout_constraintTop_toBottomOf="@+id/compare_runtime_user2"
+        tools:text="17" />
+
+    <TextView
+        android:id="@+id/compare_wrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="WRONG ANSWER"
+        app:layout_constraintBottom_toTopOf="@+id/compare_compilation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_accepted" />
+
+    <TextView
+        android:id="@+id/compare_compilation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/compare_compilation_error"
+        app:layout_constraintBottom_toTopOf="@+id/compare_runtime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_wrong" />
+
+    <TextView
+        android:id="@+id/compare_runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/compare_runtime_error"
+        app:layout_constraintBottom_toTopOf="@+id/compare_timelimit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_compilation" />
+
+    <TextView
+        android:id="@+id/compare_timelimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/compare_timelimit_exceeded"
+        app:layout_constraintBottom_toTopOf="@+id/compare_battle_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_runtime" />
+
+
+    <com.google.android.material.progressindicator.ProgressIndicator
+        android:id="@+id/compare_progress"
+        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorColor="?attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_user1_pic"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/compare_empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/compare_empty_initial_text"
+        app:layout_constraintBottom_toTopOf="@+id/compare_battle_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compare_user1_pic" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/compare_battle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Battle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

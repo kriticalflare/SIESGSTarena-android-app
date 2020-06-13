@@ -101,6 +101,9 @@ dependencies {
     // Custom tabs
     implementation "androidx.browser:browser:1.2.0"
 
+    // Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -26,4 +26,11 @@
     <string name="stats_title">Programmers with most AC submissions in respective languages</string>
     <string name="stats_submission_caption">AC Submissions: </string>
     <string name="stats_language">Language: </string>
+    <string name="compare_headline">Get your records clear before challenging anyone!</string>
+    <string name="compare_result">%1$s Won!</string>
+    <string name="compare_accepted">ACCEPTED</string>
+    <string name="compare_compilation_error">COMPILATION ERROR</string>
+    <string name="compare_runtime_error">RUNTIME ERROR</string>
+    <string name="compare_timelimit_exceeded">TIMELIMIT EXCEEDED</string>
+    <string name="compare_empty_initial_text">Enter the usernames that you want to compare</string>
 </resources>
