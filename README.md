@@ -4,6 +4,9 @@
 
 Built with the best of [Android Jetpack](https://developer.android.com/jetpack/) with a focus on clean architecture and providing a feature-packed, offline first experience.
 
+
+## Screenshots
+
 <p float="left">
 <img src="https://user-images.githubusercontent.com/42350771/84549282-41f21200-ad25-11ea-81ca-0abbe0432363.png" width="24%"/>
 <img src="https://user-images.githubusercontent.com/42350771/84549345-64842b00-ad25-11ea-8b63-90296a8d7628.png" width="24%"/>
@@ -19,6 +22,7 @@ Built with the best of [Android Jetpack](https://developer.android.com/jetpack/)
 </p>
 
 <p float="left">
+<img src="https://user-images.githubusercontent.com/42350771/84579745-2a329080-adee-11ea-9fce-e85ca6a3641c.png" width="24%"/>
 <img src="https://user-images.githubusercontent.com/42350771/84549682-37844800-ad26-11ea-9e4c-992873284080.png" width="24%"/>
 </p>
 
