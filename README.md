@@ -56,7 +56,7 @@ Built with the best of [Android Jetpack](https://developer.android.com/jetpack/)
 - [Moshi](https://github.com/square/moshi) - A modern JSON library for Kotlin and Java.
 - [Moshi Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/moshi) - A Converter which uses Moshi for serialization to and from JSON.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android
-
+  - [Material Motion](https://material.io/blog/android-material-motion) - Uses Material Motion from Material Components for meaningful transitions and animations that helps the user navigate
 
 ## Architecture
 
