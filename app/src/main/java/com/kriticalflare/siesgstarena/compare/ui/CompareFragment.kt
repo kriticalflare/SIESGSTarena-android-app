@@ -55,8 +55,9 @@ class CompareFragment : Fragment() {
                 .observe(viewLifecycleOwner, Observer { result ->
                     when (result.status) {
                         Resource.Status.SUCCESS -> {
-                            val user1Result = result.data!![0]
-                            val user2Result = result.data[1]
+                            val users = result.data!!
+                            val user1Result = users.find { it.user.username == username1 }!!
+                            val user2Result = users.find { it.user.username == username2 }!!
 
                             binding.compareResult.text = requireContext().getString(
                                 R.string.compare_result,
