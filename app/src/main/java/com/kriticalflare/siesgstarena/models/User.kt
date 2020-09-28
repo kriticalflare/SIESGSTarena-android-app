@@ -9,8 +9,9 @@ import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.util.Collections
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 @Entity(tableName = "users")
 @JsonClass(generateAdapter = true)
@@ -27,6 +28,7 @@ data class User(
     @field:Json(name = "githubLink") val githubLink: String?
 )
 
+@OptIn(KoinApiExtension::class)
 class UserTypeConverter : KoinComponent {
 
     private val moshi: Moshi by inject()
@@ -42,6 +44,7 @@ class UserTypeConverter : KoinComponent {
     }
 }
 
+@OptIn(KoinApiExtension::class)
 class UserListTypeConverter : KoinComponent {
     private val moshi: Moshi by inject()
     private val userListAdapter: JsonAdapter<List<User>> = moshi.adapter(
