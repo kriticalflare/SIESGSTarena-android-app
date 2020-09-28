@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionManager
 import com.google.android.material.transition.MaterialFadeThrough
 import com.kriticalflare.siesgstarena.databinding.FragmentContestsBinding
 import com.kriticalflare.siesgstarena.models.Resource
@@ -38,6 +39,7 @@ class ContestsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var firstRun = true
 //        when this vs viewLifeCycleOwner
         contestsViewModel.getAllContests().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
@@ -45,6 +47,11 @@ class ContestsFragment : Fragment() {
                     binding.contestsRecycler.adapter = result.data?.let { ContestsAdapter(it.reversed(), requireContext()) }
                     binding.contestsRecycler.layoutManager = LinearLayoutManager(context)
                     binding.contestsRecycler.setHasFixedSize(true)
+                    if (firstRun) {
+                        firstRun = firstRun.not()
+                        val fadeThrough = MaterialFadeThrough()
+                        TransitionManager.beginDelayedTransition(binding.root, fadeThrough)
+                    }
                     binding.loadingProgressbar.visibility = View.GONE
                     binding.contestsRecycler.visibility = View.VISIBLE
                 }

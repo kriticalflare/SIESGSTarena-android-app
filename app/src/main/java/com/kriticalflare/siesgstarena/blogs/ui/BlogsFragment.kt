@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionManager
 import com.google.android.material.transition.MaterialFadeThrough
 import com.kriticalflare.siesgstarena.databinding.FragmentBlogsBinding
 import com.kriticalflare.siesgstarena.models.Resource
@@ -38,6 +39,7 @@ class BlogsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var firstRun = true
         blogsViewModel.getAllBlogs().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Resource.Status.SUCCESS -> {
@@ -45,6 +47,11 @@ class BlogsFragment : Fragment() {
                     binding.blogsRecycler.adapter =
                         result.data?.let { BlogsAdapter(it, requireContext()) }
                     binding.blogsRecycler.setHasFixedSize(true)
+                    if (firstRun) {
+                        firstRun = firstRun.not()
+                        val fadeThrough = MaterialFadeThrough()
+                        TransitionManager.beginDelayedTransition(binding.root, fadeThrough)
+                    }
                     binding.loadingProgressbar.visibility = View.GONE
                     binding.blogsRecycler.visibility = View.VISIBLE
                 }
