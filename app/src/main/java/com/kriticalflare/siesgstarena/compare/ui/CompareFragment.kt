@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import com.kriticalflare.siesgstarena.R
@@ -52,7 +51,7 @@ class CompareFragment : Fragment() {
             val username1 = binding.compareUsername1.editText?.text.toString()
             val username2 = binding.compareUsername2.editText?.text.toString()
             compareViewModel.getComparison(username1, username2)
-                .observe(viewLifecycleOwner, Observer { result ->
+                .observe(viewLifecycleOwner, { result ->
                     when (result.status) {
                         Resource.Status.SUCCESS -> {
                             val users = result.data!!

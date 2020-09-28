@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionManager
 import com.google.android.material.transition.MaterialFadeThrough
@@ -43,7 +42,7 @@ class ProblemsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var firstRun = true
-        problemsViewModel.getAllProblemSets().observe(viewLifecycleOwner, Observer { result ->
+        problemsViewModel.getAllProblemSets().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Resource.Status.SUCCESS -> {
                     binding.problemsRecycler.adapter =
