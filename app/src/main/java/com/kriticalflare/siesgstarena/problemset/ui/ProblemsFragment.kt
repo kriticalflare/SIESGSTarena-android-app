@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.transition.MaterialFadeThrough
 import com.kriticalflare.siesgstarena.databinding.FragmentProblemsBinding
 import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +22,12 @@ class ProblemsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val problemsViewModel: ProblemsViewModel by viewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
+        exitTransition = MaterialFadeThrough()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

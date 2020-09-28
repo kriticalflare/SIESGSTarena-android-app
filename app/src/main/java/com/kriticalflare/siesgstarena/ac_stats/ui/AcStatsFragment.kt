@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.transition.MaterialSharedAxis
 import com.kriticalflare.siesgstarena.databinding.FragmentAcStatsBinding
 import com.kriticalflare.siesgstarena.models.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,6 +19,12 @@ class AcStatsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val statsViewModel: StatsViewModel by viewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

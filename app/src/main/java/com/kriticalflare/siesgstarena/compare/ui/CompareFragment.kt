@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.transition.MaterialSharedAxis
 import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.databinding.FragmentCompareBinding
 import com.kriticalflare.siesgstarena.models.Compare
@@ -22,6 +23,12 @@ class CompareFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val compareViewModel: CompareViewModel by viewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
