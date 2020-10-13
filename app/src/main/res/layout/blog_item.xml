@@ -65,7 +65,8 @@
             android:src="@drawable/ic_thumb_up_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/blog_recent_activity" />
+            app:layout_constraintTop_toBottomOf="@+id/blog_recent_activity"
+            app:tint="?attr/cardDrawableTint" />
 
         <TextView
             android:id="@+id/blog_upvote_count"
@@ -87,7 +88,9 @@
             android:src="@drawable/ic_thumb_down_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/blog_upvote_count"
-            app:layout_constraintTop_toBottomOf="@+id/blog_recent_activity" />
+            app:layout_constraintTop_toBottomOf="@+id/blog_recent_activity"
+            app:tint="?attr/cardDrawableTint"
+            />
 
         <TextView
             android:id="@+id/blog_downvote_count"

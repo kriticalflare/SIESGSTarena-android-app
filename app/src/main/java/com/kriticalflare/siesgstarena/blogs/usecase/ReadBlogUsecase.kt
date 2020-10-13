@@ -14,7 +14,7 @@ class ReadBlogUsecase(val blog: Blog, val context: Context) {
     fun openCustomTab() {
         if (IntentUtils.isCustomTabSupported(context)) {
             val customTabsIntent = CustomTabsIntent.Builder()
-                .setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                .setToolbarColor(ContextCompat.getColor(context, R.color.purple_200))
                 .addDefaultShareMenuItem()
                 .setShowTitle(true)
                 .build()
