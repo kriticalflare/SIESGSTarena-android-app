@@ -9,6 +9,6 @@ data class Compare(
     @field:Json(name = "user")
     val user: User,
 
-    @field:Json(name = "performace")
+    @field:Json(name = "performance")
     val performance: SubmissionStats
 )
