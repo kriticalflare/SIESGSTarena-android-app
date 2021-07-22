@@ -9,14 +9,12 @@ import com.kriticalflare.siesgstarena.R
 import com.kriticalflare.siesgstarena.database.ContestsDao
 import com.kriticalflare.siesgstarena.models.Contest
 import java.util.Locale
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
 
-@OptIn(KoinApiExtension::class)
 class ContestsWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent?): RemoteViewsFactory {
         return ContestsWidgetItemFactory(applicationContext, intent)

@@ -8,11 +8,9 @@ import com.kriticalflare.siesgstarena.database.BlogsDao
 import com.kriticalflare.siesgstarena.models.Resource
 import com.kriticalflare.siesgstarena.network.ArenaApiClient
 import kotlinx.coroutines.coroutineScope
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
-@OptIn(KoinApiExtension::class)
 class BlogsWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params),
     KoinComponent {
     override suspend fun doWork(): Result = coroutineScope {

@@ -2,11 +2,9 @@ package com.kriticalflare.siesgstarena.network
 
 import com.kriticalflare.siesgstarena.BuildConfig
 import com.kriticalflare.siesgstarena.models.Resource
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import retrofit2.Response
 
-@OptIn(KoinApiExtension::class)
 open class BaseApiClient : KoinComponent {
 
     protected suspend fun <T> getResult(request: suspend () -> Response<T>): Resource<T> {

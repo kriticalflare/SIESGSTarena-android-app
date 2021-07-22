@@ -9,7 +9,6 @@ import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.util.Collections
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -39,7 +38,6 @@ data class Problem(
     fun createProblemUrl(): String = "http://arena.siesgst.ac.in/contest/$contestCode/problem/$code"
 }
 
-@OptIn(KoinApiExtension::class)
 class TagsTypeConverter : KoinComponent {
 
     private val moshi: Moshi by inject()
